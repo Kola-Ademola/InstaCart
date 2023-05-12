@@ -9,7 +9,7 @@ ___
 Instacart is an American delivery company that operates a grocery delivery and pick-up service in the United States and Canada. The company offers its services via a website and mobile app. The service allows customers to order groceries from participating retailers with the shopping being done by a personal shopper. This project is just focused on **DENORMALIZATION** of the Instacart orders dataset & some basic analysis
 ___
 ## SKILLS DEMONSTRATED
-I used advanced SQL functions to import the dataset and normalized it all in PostgreSQL.  
+I used advanced SQL functions to import the dataset and normalized it, then I did some basic data analysis to query the database as well, all in PostgreSQL.  
 
 ### DENORMALIZATION PROCESS
 For this project I started by creating a temporary table to hold the denormalized data first;

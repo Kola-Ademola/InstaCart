@@ -29,6 +29,11 @@ WITH(
 	HEADER TRUE
 );
 
+--VIEW DENORMALIZED DATA
+SELECT *
+FROM denormalized_instacart_db
+LIMIT 10;
+sed
 --DENORMALIZATION OF TABLE/DATA
 --creating aisle table
 CREATE TABLE aisle(
@@ -95,4 +100,4 @@ FROM denormalized_instacart_db
 ORDER BY order_date;
 
 select *
-from orders
+from departments

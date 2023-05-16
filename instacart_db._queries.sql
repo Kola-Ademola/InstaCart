@@ -270,7 +270,8 @@ GROUP BY o.order_dow, order_day_of_week
 ORDER BY ROUND(AVG(quantity)) DESC,
 		ROUND(AVG(o.quantity * p.unit_price), 2) DESC;
 /*
-INSIGHT:::
+INSIGHT:::The average order size & value is almost the same for most days of the week, but Fridays come out on top
+			with "6 orders per day" and an AOV of "$151.36".
 */
 --Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?
 

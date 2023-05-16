@@ -223,60 +223,88 @@ INSIGHT:::The top-selling product is the "Vanilla, Tangerine & Shortbread Ice Cr
 
 --Q2 Which products have the highest profit margin, and how much profit have they generated?
 SELECT p.product_name,
-		CONCAT('$', SUM(o.quantity * (p.unit_price - p.unit_cost))) profit_margin
+		COUNT(o.order_id) total_orders,
+		CONCAT(ROUND((((p.unit_price - p.unit_cost) / p.unit_cost) * 100), 2), '%') profit_margin,
+		CONCAT('$', SUM(o.quantity * (p.unit_price - p.unit_cost))) total_profit
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
-GROUP BY product_name
-ORDER BY profit_margin;
-
+GROUP BY product_name, 
+		(((p.unit_price - p.unit_cost) / p.unit_cost) * 100)
+ORDER BY (((p.unit_price - p.unit_cost) / p.unit_cost) * 100),
+		 SUM(o.quantity * (p.unit_price - p.unit_cost)) DESC
+LIMIT 10;
 /*
-
+INSIGHT:::The top products with the most generated profit all have the same profit margin
+		   with "Vanilla, Tangerine & Shortbread Ice Cream" at the top of list with "$1,118.40" total profit.
 */
 --Q3 Which aisles have the highest sales volume, and how does this vary by department?
-
-
+SELECT a.aisle,
+		d.department,
+		SUM(o.quantity) total_sales_volume,
+		CONCAT('$', SUM(o.quantity * p.unit_price)) total_sales
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+JOIN aisle a ON p.aisle_id = a.aisle_id
+JOIN departments d ON p.department_id = d.department_id
+GROUP BY a.aisle, d.department
+ORDER BY total_sales_volume DESC
+LIMIT 10;
 /*
-
+INSIGHT:::The "missing" aisle has the highest overall sales volume with over 147,000 items sold
 */
---Q4 What is the average order size (in terms of quantity and total cost) per day of the week?
-
-
+--Q4 What is the average order size and value(in terms of quantity and total price) per day of the week?
+SELECT CASE o.order_dow
+        	WHEN 0 THEN 'Sunday'
+        	WHEN 1 THEN 'Monday'
+        	WHEN 2 THEN 'Tuesday'
+        	WHEN 3 THEN 'Wednesday'
+        	WHEN 4 THEN 'Thursday'
+        	WHEN 5 THEN 'Friday'
+        	WHEN 6 THEN 'Saturday'
+    	END AS order_day_of_week,
+		CONCAT(ROUND(AVG(quantity)), ' orders / day') average_order_size,
+		CONCAT('$', ROUND(AVG(o.quantity * p.unit_price), 2)) average_order_value
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY o.order_dow, order_day_of_week
+ORDER BY ROUND(AVG(quantity)) DESC,
+		ROUND(AVG(o.quantity * p.unit_price), 2) DESC;
 /*
-
+INSIGHT:::
 */
 --Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?
 
 
 /*
-
+INSIGHT:::
 */
 --Q6 What is the average time between orders for each user, and how does this vary by product category?
 
 
 /*
-
+INSIGHT:::
 */
 --Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?
 
 
 /*
-
+INSIGHT:::
 */
 --Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?
 
 
 /*
-
+INSIGHT:::
 */
 --Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?
 
 
 /*
-
+INSIGHT:::
 */
 --Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?
 
 
 /*
-
+INSIGHT:::
 */

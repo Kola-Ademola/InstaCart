@@ -126,5 +126,5 @@ ___RESULT___
 ![](images/q10_table.png)
 >
 ___
-
-
+## RECCOMMENDATIONS & CONCLUSIONS
+.

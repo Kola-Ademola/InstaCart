@@ -61,65 +61,65 @@ ___QUERY___
 ![](images/q1.png)
 ___RESULT___  
 ![](images/q1_table.png)
-> INSIGHT:::The top-selling product is the **"Vanilla, Tangerine & Shortbread Ice Cream"** with a total revenue of $11,184.00.
+> INSIGHT:::The top-selling product is the **"Vanilla, Tangerine & Shortbread Ice Cream"** with a total revenue of **$11,184.00**.
 ___
-* Q2 Which products have the highest profit margin, and how much profit have they generated?
+* Q2 Which products have the highest profit margin, and how much profit have they generated?  
 ___QUERY___  
 ![](images/q2.png)
 ___RESULT___  
 ![](images/q2_table.png)
-> INSIGHT:::The top products with the most generated profit all have the same profit margin, with "Vanilla, Tangerine & Shortbread Ice Cream" at the top of list with "$1,118.40" total profit.
+> INSIGHT:::The top products with the most generated profit all have the same profit margin, with **"Vanilla, Tangerine & Shortbread Ice Cream"** at the top of list with **"$1,118.40"** total profit.
 ___
-* Q3 Which aisles have the highest sales volume, and how does this vary by department?
+* Q3 Which aisles have the highest sales volume, and how does this vary by department?  
 ___QUERY___  
 ![](images/q3.png)
 ___RESULT___  
 ![](images/q3_table.png)
 > INSIGHT:::The **"missing"** aisle has the highest overall sales volume with over **147,000** items sold
 ___
-* Q4 What is the average order size (in terms of quantity and total cost) per day of the week?
+* Q4 What is the average order size (in terms of quantity and total cost) per day of the week?  
 ___QUERY___  
 ![](images/q4.png)
 ___RESULT___  
 ![](images/q4_table.png)
 > INSIGHT:::The average order size & value is almost the same for most days of the week, but Fridays come out on top with **"6 orders per day"** and an AOV of **"$151.36"**.
 ___
-* Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?
+* Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?  
 ___QUERY___  
 ![](images/q5.png)
 ___RESULT___  
 ![](images/q5_table.png)
 >
 ___
-* Q6 What is the average time between orders for each user, and how does this vary by product category?
+* Q6 What is the average time between orders for each user, and how does this vary by product category?  
 ___QUERY___  
 ![](images/q6.png)
 ___RESULT___  
 ![](images/q6_table.png)
 >
 ___
-* Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?
+* Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?  
 ___QUERY___  
 ![](images/q7.png)
 ___RESULT___  
 ![](images/q7_table.png)
 >
 ___
-* Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?
+* Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?  
 ___QUERY___  
 ![](images/q8.png)
 ___RESULT___  
 ![](images/q8_table.png)
 >
 ___
-* Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?
+* Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?  
 ___QUERY___  
 ![](images/q9.png)
 ___RESULT___  
 ![](images/q9_table.png)
 >
 ___
-* Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?
+* Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?  
 ___QUERY___  
 ![](images/q10.png)
 ___RESULT___  

@@ -24,10 +24,8 @@ COPY denormalized_instacart_db(product_id, product_name, aisle_id, department_id
 				days_since_prior_order, department, unit_price, unit_cost,
 				quantity, order_date, order_status)
 FROM 'C:/Users/Kola Ademola/Documents/Gits/InstaCart/instacart_db.csv'
-WITH(
-	FORMAT CSV,
-	HEADER TRUE
-);
+DELIMITER ','
+CSV HEADER;
 
 --VIEW DENORMALIZED DATA
 SELECT *
@@ -207,3 +205,78 @@ JOIN products p ON o.product_id = p.product_id
 GROUP BY o.user_id
 ORDER BY total_revenue DESC
 LIMIT 3;
+
+
+
+--Q1 What are the top-selling products by revenue, and how much revenue have they generated?
+SELECT p.product_name,
+		CONCAT('$', SUM(p.unit_price * o.quantity)) total_revenue
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_name, p.unit_price
+ORDER BY SUM(p.unit_price * o.quantity) DESC
+LIMIT 10;
+/*
+INSIGHT:::The top-selling product is the "Vanilla, Tangerine & Shortbread Ice Cream"
+		   with a total revenue of $11,184.00.
+*/
+
+--Q2 Which products have the highest profit margin, and how much profit have they generated?
+SELECT p.product_name,
+		CONCAT('$', SUM(o.quantity * (p.unit_price - p.unit_cost))) profit_margin
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY product_name
+ORDER BY profit_margin;
+
+/*
+
+*/
+--Q3 Which aisles have the highest sales volume, and how does this vary by department?
+
+
+/*
+
+*/
+--Q4 What is the average order size (in terms of quantity and total cost) per day of the week?
+
+
+/*
+
+*/
+--Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?
+
+
+/*
+
+*/
+--Q6 What is the average time between orders for each user, and how does this vary by product category?
+
+
+/*
+
+*/
+--Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?
+
+
+/*
+
+*/
+--Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?
+
+
+/*
+
+*/
+--Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?
+
+
+/*
+
+*/
+--Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?
+
+
+/*
+
+*/

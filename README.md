@@ -55,7 +55,7 @@ ___
 ____
 I'll be using this database to solve some business problems that the owner of **Instacart** is interested in knowing and solving..
 
-### PROBLEM STATEMENT
+### BUSINESS PROBLEMS
 * Q1 What are the top-selling products by revenue, and how much revenue have they generated?  
 ___QUERY___  
 ![](images/q1.png)

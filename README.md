@@ -82,49 +82,31 @@ ___QUERY___
 ![](images/q4.png)
 ___RESULT___  
 ![](images/q4_table.png)
-> INSIGHT:::The average order size & value is almost the same for most days of the week, but Fridays come out on top with **"6 orders per day"** and an AOV of **"$151.36"**.
+> INSIGHT:::The average order size & value is almost the same for most days of the week, but **Fridays** come out on top with **"6 orders per day"** and an AOV of **"$151.36"**.
 ___
 * Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?  
 ___QUERY___  
 ![](images/q5.png)
 ___RESULT___  
 ![](images/q5_table.png)
->
+> INSIGHT:::Surprisingly most orders are made in the middle of the night, with **3AM** having the most orders.
 ___
 * Q6 What is the average time between orders for each user, and how does this vary by product category?  
 ___QUERY___  
 ![](images/q6.png)
 ___RESULT___  
 ![](images/q6_table.png)
->
-___
-* Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?  
-___QUERY___  
-![](images/q7.png)
-___RESULT___  
-![](images/q7_table.png)
->
-___
-* Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?  
-___QUERY___  
-![](images/q8.png)
-___RESULT___  
-![](images/q8_table.png)
->
-___
-* Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?  
-___QUERY___  
-![](images/q9.png)
-___RESULT___  
-![](images/q9_table.png)
->
-___
-* Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?  
-___QUERY___  
-![](images/q10.png)
-___RESULT___  
-![](images/q10_table.png)
->
+> INSIGHT::: Only **22%** of the orders placed have been delivered to the customers.
 ___
 ## RECCOMMENDATIONS & CONCLUSIONS
-.
+* Since the **"Vanilla, Tangerine & Shortbread Ice Cream"** is the top-selling product with high revenue, InstaCart can consider promoting it further to maximize sales by offering special deals or discounts to attract more customers.
+
+* InstaCart should identify other products with a similar profit margin(**high profit-margin**) as the top-selling product and prioritize them in their marketing and sales efforts. These products have the potential to generate significant profit, so allocating resources to promote sales would be a very good move.
+
+* The **"missing"** aisle has the highest overall sales volume, indicating its popularity among customers. Investigation should be carried out to find out why this aisle is labeled as **"missing"** and ensure its correct categorization to maintain its sales momentum. Consider expanding the product range in this aisle to meet customer demand and further drive sales upward.
+
+* Since **Fridays** have the highest average order size and value, InstaCart should take this as an opportunity to run targeted marketing campaigns, offering exclusive deals, or offers on Fridays. This can attract more customers and boost sales during this peak day.
+
+* For the fact that most orders are placed in the middle of the night, particularly at **3AM**, Instacart should ensure that operations, including customer support and order fulfillment, are optimized to handle the influx of orders during this time of the day.
+
+* With only 22% of orders delivered, which is very poor there is a need to investigate and address delivery challenges if any by evaluating the existing delivery processes, identifying bottlenecks, and implementing improvements to enhance delivery efficiency. Instacart can also focus on reducing delivery times, ensuring proper packaging, and providing real-time tracking updates to enhance the overall customer experience.

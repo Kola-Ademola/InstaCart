@@ -97,117 +97,6 @@ SELECT order_id, user_id, product_id,
 FROM denormalized_instacart_db
 ORDER BY order_date;
 
---Q1 how have the orders changed overtime monthly?
-SELECT DATE_PART('YEAR', order_date) order_year,
-		CASE DATE_PART('MONTH', order_date)
-			WHEN 1 THEN 'January'
-			WHEN 2 THEN 'February'
-			WHEN 3 THEN 'March'
-			WHEN 4 THEN 'April'
-			WHEN 5 THEN 'May'
-			WHEN 6 THEN 'June'
-			WHEN 7 THEN 'July'
-			WHEN 8 THEN 'August'
-			WHEN 9 THEN 'September'
-			WHEN 10 THEN 'October'
-			WHEN 11 THEN 'November'
-			WHEN 12 THEN 'December'
-		END AS order_month,
-		COUNT(order_id) total_orders
-FROM orders
-GROUP BY DATE_PART('YEAR', order_date), DATE_PART('MONTH', order_date)
---OR
-SELECT CASE DATE_PART('MONTH', order_date)
-			WHEN 1 THEN 'January'
-			WHEN 2 THEN 'February'
-			WHEN 3 THEN 'March'
-			WHEN 4 THEN 'April'
-			WHEN 5 THEN 'May'
-			WHEN 6 THEN 'June'
-			WHEN 7 THEN 'July'
-			WHEN 8 THEN 'August'
-			WHEN 9 THEN 'September'
-			WHEN 10 THEN 'October'
-			WHEN 11 THEN 'November'
-			WHEN 12 THEN 'December'
-		END AS order_month,
-		COUNT(order_id) total_orders
-FROM orders
-GROUP BY DATE_PART('MONTH', order_date);
-
---Q2 are there any weekly fluctuations in the size of the orders?
-SELECT DATE_PART('YEAR', order_date) order_year,
-		CONCAT('Week ', DATE_PART('WEEK', order_date)) order_week,
-		COUNT(order_id) total_orders
-FROM orders
-GROUP BY DATE_PART('YEAR', order_date),DATE_PART('WEEK', order_date);
-
---Q3 what is the average number of orders placed by day of week?
-SELECT CASE order_dow
-        	WHEN 0 THEN 'Sunday'
-        	WHEN 1 THEN 'Monday'
-        	WHEN 2 THEN 'Tuesday'
-        	WHEN 3 THEN 'Wednesday'
-        	WHEN 4 THEN 'Thursday'
-        	WHEN 5 THEN 'Friday'
-        	WHEN 6 THEN 'Saturday'
-    	END AS order_day_of_week,
-		 (SELECT COUNT(*) FROM orders) / COUNT(*) avg_weekly_orders
-FROM orders
-GROUP BY order_day_of_week
-ORDER BY avg_weekly_orders;
-
---Q4 what is the hour of the day with thee highest number of orders
-SELECT order_hour_of_day,
-		COUNT(order_id) total_orders
-FROM orders
-GROUP BY order_hour_of_day
-ORDER BY total_orders DESC
-LIMIT 1;
-
---Q5 which dept has the highest average spend per customer?
-SELECT d.department,
-		ROUND(AVG(p.unit_price), 2) avg_spend
-FROM orders o
-JOIN products p ON o.product_id = p.product_id
-JOIN departments d ON o.department_id = d.department_id
-GROUP BY d.department
-ORDER BY avg_spend DESC
-LIMIT 1;
-
---Q6 which product generated more profit?
-SELECT p.product_name,
-		SUM(p.unit_price - p.unit_cost) profit
-FROM orders o
-JOIN products p ON o.product_id = p.product_id
-GROUP BY p.product_name
-ORDER BY profit DESC
-LIMIT 1;
-
---Q7 what are the 3 ailes with the most order, and which dept do they belong to?
-SELECT a.aisle,
-		d.department,
-		COUNT(o.order_id) total_orders
-FROM orders o
-JOIN aisle a ON o.aisle_id = a.aisle_id
-JOIN departments d ON o.department_id = d.department_id
-GROUP BY a.aisle, d.department
-ORDER BY total_orders DESC
-LIMIT 3;
-
---Q8 which 3 users generated the highest revenue, and how many aisle did they order from?
-SELECT o.user_id,
-		COUNT(DISTINCT o.aisle_id) number_of_aisle,
-		SUM(p.unit_price) total_revenue
-FROM orders o
-JOIN aisle a ON o.aisle_id = a.aisle_id
-JOIN products p ON o.product_id = p.product_id
-GROUP BY o.user_id
-ORDER BY total_revenue DESC
-LIMIT 3;
-
-
-
 --Q1 What are the top-selling products by revenue, and how much revenue have they generated?
 SELECT p.product_name,
 		CONCAT('$', SUM(p.unit_price * o.quantity)) total_revenue
@@ -273,39 +162,29 @@ ORDER BY ROUND(AVG(quantity)) DESC,
 INSIGHT:::The average order size & value is almost the same for most days of the week, but Fridays come out on top
 			with "6 orders per day" and an AOV of "$151.36".
 */
---Q5 Which products are most commonly purchased together, and what is the frequency of these combinations?
-
-
+--Q5 On average, during which time of the day do we receive the highest number of orders?
+WITH total_orders AS(
+    SELECT order_hour_of_day,
+			COUNT(*) num_of_orders
+    FROM orders
+    GROUP BY order_hour_of_day
+)
+SELECT CASE 
+		WHEN order_hour_of_day BETWEEN 0 AND 11 THEN CONCAT(order_hour_of_day, 'AM')
+		WHEN order_hour_of_day BETWEEN 13 AND 23 THEN CONCAT(order_hour_of_day - 12, 'PM')
+		ELSE CONCAT(order_hour_of_day, 'PM')
+	   END time_of_day,
+		CONCAT(ROUND(((SELECT SUM(num_of_orders) FROM total_orders) / num_of_orders)), ' orders') average_num_of_orders
+FROM total_orders
+GROUP BY time_of_day, num_of_orders
+ORDER BY ROUND(((SELECT SUM(num_of_orders) FROM total_orders) / num_of_orders)) DESC;
 /*
-INSIGHT:::
+INSIGHT:::Surprisingly most orders are made in the middle of the night, with **3AM** having the most orders.
 */
---Q6 What is the average time between orders for each user, and how does this vary by product category?
-
-
+--Q6 What is delivery success rate by order_status?
+SELECT CONCAT(COUNT(*), ' orders') AS total_orders,
+       CONCAT(ROUND(COUNT(CASE WHEN order_status = 'Delivered' THEN 1 END) * 100.0 / COUNT(*)), '% Delivered') AS delivery_success_rate
+FROM orders;
 /*
-INSIGHT:::
-*/
---Q7 Which products have the highest rate of returns or customer complaints, and what are the common reasons?
-
-
-/*
-INSIGHT:::
-*/
---Q8 What is the average unit cost and unit price for each product category, and how does this compare to industry benchmarks?
-
-
-/*
-INSIGHT:::
-*/
---Q9 How have sales and revenue changed over time for each product category, and what factors have contributed to these changes?
-
-
-/*
-INSIGHT:::
-*/
---Q10 Which users have the highest lifetime value, and what are their common purchase patterns and preferences?
-
-
-/*
-INSIGHT:::
+INSIGHT::: Only **22%** of the orders placed have been delivered to the customers.
 */

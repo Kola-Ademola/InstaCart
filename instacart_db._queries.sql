@@ -1,4 +1,4 @@
---Create temp table to hold denormalized data
+--Create temporary table to hold denormalized data
 CREATE TEMPORARY TABLE denormalized_instacart_db (
 	product_id INT,	
 	product_name TEXT,

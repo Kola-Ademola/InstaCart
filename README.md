@@ -1,5 +1,5 @@
 # InstaCart DB
-# Denormalization of the InstaCart dataset &amp; Analysis
+# Normalization of the InstaCart dataset &amp; Analysis
 ## by Kola Ademola
 ___
 ![](images/Instacart_Logo.jpg)

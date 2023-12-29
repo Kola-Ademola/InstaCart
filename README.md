@@ -6,7 +6,7 @@ ___
 ___
 ## INTRODUCTION
 ___
-Instacart is an American delivery company that operates a grocery delivery and pick-up service in the United States and Canada. The company offers its services via a website and mobile app. The service allows customers to order groceries from participating retailers with the shopping being done by a personal shopper. This project is just focused on **DENORMALIZATION** of the Instacart orders dataset & some basic analysis
+Instacart is an American delivery company that operates a grocery delivery and pick-up service in the United States and Canada. The company offers its services via a website and mobile app. The service allows customers to order groceries from participating retailers with the shopping being done by a personal shopper. This project is just focused on **NORMALIZATION** of the Instacart orders dataset & some basic analysis
 ___
 ## SKILLS DEMONSTRATED
 I used advanced SQL functions to import the dataset and normalized it, then I did some basic data analysis to query the database as well, all in PostgreSQL.  
@@ -46,7 +46,7 @@ ___
 The initial dataset is a denormalized dataset; I will be denormalizing it to **3NF** brfore analysis  
 ___DENORMALIZED DATASET___  
 ![](images/denormalized_data.png)
-* The whole order details is in one table, I will break it down to 4 diffrent tables in the process of normalization or archieving **3NF**.   
+* The whole order details is in one table, I will break it down to 4 diffrent tables in the process of **Normalization** or archieving **3NF**.   
 * The result of normalization can be seen in this data model(**STAR SCHEMA**);  
 ___DATA MODEL___  
 ![](images/data_model.png)
